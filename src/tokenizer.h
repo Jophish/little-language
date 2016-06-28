@@ -25,7 +25,10 @@ typedef enum {
     TOK_LESS_THAN,
     TOK_GREATER_THAN,
     TOK_LEQ,
-    TOK_GEQ
+    TOK_GEQ,
+    TOK_EOF,
+    TOK_PRINT,
+    TOK_COMMA
 } Symbol;
 
 typedef enum{
@@ -44,6 +47,7 @@ typedef struct{
     Production currentProd;
     Symbol currentTok;
     char *currentChar;
+    char *currentTokString; //string that corresponds to our current token
 
 }Parser;
 
@@ -56,5 +60,9 @@ void getNextToken(void);
 void getNextChar(void);
 void consumeWhitespace(void);
 void printCurrentToken(void);
+void getTokIdent(void);
+void clearCurrentTokString(void);
+void printCurrentTokString(void);
+void getNumIdent(void);
 
 #endif // TOK_H

@@ -13,10 +13,12 @@ int main(int argc, char *argv[])
 
     
     initParser(buffer);
-    while (*parser.currentChar != '\0'){
-	
-        getNextToken();
+    
+    while (parser.currentTok != TOK_EOF){	
+        getNextToken();	
 	printCurrentToken();
+	printCurrentTokString();
+	
     }
 
     return 0;
