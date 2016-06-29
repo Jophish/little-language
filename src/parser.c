@@ -76,7 +76,10 @@ void enterWhile(void){
     getNextToken();
 
     assertBlock();
-    enterBlock();
+
+    while (isBlock()){
+	 enterBlock();
+     }
 
     checkTok(TOK_R_CURLY);
     getNextToken();
@@ -249,8 +252,13 @@ void enterIf(void){
 
     checkTok(TOK_L_CURLY);
     getNextToken();
+    
     assertBlock();
-    enterBlock();
+    
+    while (isBlock()){
+	enterBlock();
+    }
+    
     checkTok(TOK_R_CURLY);
     getNextToken();
     
@@ -377,6 +385,7 @@ int main(int argc, char *argv[])
     while (isBlock()){
 	assertBlock();
 	enterBlock();
+	printf("in Main");
     }
 
 
