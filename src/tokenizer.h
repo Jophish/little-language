@@ -2,6 +2,7 @@
 #define TOK_H
 
 #define MAX_VAR_LEN 64 //maximum char length for TOK_IDENT
+#define DEBUG_ON 1 //print debug info
 
 /* Enum for tokens*/
 typedef enum {
@@ -64,5 +65,7 @@ void getTokIdent(void);
 void clearCurrentTokString(void);
 void printCurrentTokString(void);
 void getNumIdent(void);
+void printEnterProduction(char*);
+void printExitProduction(char*);
 
 #endif // TOK_H

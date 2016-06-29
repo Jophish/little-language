@@ -106,7 +106,8 @@ void getNextToken(void){
 	    getNextChar();
 	    parser.currentTok = TOK_EQUALS;
 	    break;
-	}	
+	}
+	
 	//otherwise we just have a plain old assignment
 	else{
 	    parser.currentTok = TOK_ASSIGN;
@@ -201,13 +202,15 @@ void getNextToken(void){
     }
 
     
-
+    printCurrentToken();
     getNextChar();
 
 }
 
-
-
+/*
+  Consumes input in the source when we know we're expecting a TOK_NUMBER, sets the parser's 
+  currentTokString to a string representing the given number.
+ */
 void getNumIdent(void){
     int count = 0;
     while (!isspace(*(parser.currentChar)) && isdigit(*(parser.currentChar))){
@@ -219,7 +222,7 @@ void getNumIdent(void){
     *(parser.currentTokString+count) = '\0';
 }	
 /*
-  Consumes input in the source when we know we're expecting a TOK_IDENT, sets the
+  Consumes input in the source when we know we're expecting a TOK_IDENT or keyword, sets the
   parser's currentTokString to the associated text.
  */
 void getTokIdent(void){
@@ -281,4 +284,18 @@ void printCurrentTokString(void){
     if (*(parser.currentTokString) != 0){
 	printf("current string for above token is: %s\n", (parser.currentTokString));
     }
+}
+
+void printEnterProduction(char *name){
+    if (DEBUG_ON){
+	printf("Entering %s\n", name);
+    }
+
+}
+
+void printExitProduction(char *name){
+    if (DEBUG_ON){
+	printf("Exiting %s\n", name);
+    }
+
 }

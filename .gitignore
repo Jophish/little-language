@@ -40,3 +40,9 @@ flycheck_*.el
 
 # projectiles files
 .projectile
+
+# emacs TAGS file
+/TAGS
+
+# binary
+/ll
